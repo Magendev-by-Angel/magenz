@@ -50,7 +50,7 @@ const createApp = appName => {
 		"npm install react react-dom next @chakra-ui/react @emotion/react @emotion/styled framer-motion"
 	);
 	execSync(
-		"npm install -D eslint prettier typescript @types/node @types/react"
+		"npm install -D eslint prettier typescript @types/node @types/react @types/next"
 	);
 };
 const appName = process.argv[2];
