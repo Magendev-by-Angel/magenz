@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { execSync } = require("child_process");
 const {
 	theme,
@@ -51,10 +53,9 @@ const createApp = appName => {
 		"npm install -D eslint prettier typescript @types/node @types/react"
 	);
 };
-
-if (process.argv.length > 2) {
-	const appName = process.argv[2];
-	createApp(appName);
-} else {
-	console.log("Please give a name for your propject");
+const appName = process.argv[2];
+if (!appName) {
+	console.error("Error: App name is required");
+	process.exit(1);
 }
+createApp(appName);
