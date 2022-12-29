@@ -43,6 +43,7 @@ const createApp = (appName) => {
   fs.writeFileSync("next.config.js", nextConf);
   fs.writeFileSync("tsconfig.json", tsconfig);
   fs.writeFileSync("package.json", package(appName));
+  fs.writeFileSync(".gitignore", "node_modules");
 };
 
 if (process.argv.length > 2) {
