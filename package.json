@@ -1,12 +1,12 @@
 {
-  "name": "my-package",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "magenz": "node index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+	"name": "magez",
+	"version": "1.0.1",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"magenz": "node index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
 }
