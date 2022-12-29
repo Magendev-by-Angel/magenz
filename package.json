@@ -1,12 +1,12 @@
 {
 	"name": "magenz",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "",
 	"main": "index.js",
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"bin": {
-		"create-magenz-app": "./index.js"
+		"magenz": "./index.js"
 	}
 }
