@@ -1,1 +1,1 @@
-# magenz
+# magez
