@@ -102,8 +102,8 @@ rl.question(
 		folderName = answer;
 		console.log(
 			isLocal
-				? "Creating project in current folder location"
-				: `Creating project "${answer}"`
+				? `Creating project "${answer}"`
+				: "Creating project in current folder location"
 		);
 		rl.question(
 			"Do you want to install the default dependencies? [Y] or [N], anything else will be taken as a No ",
