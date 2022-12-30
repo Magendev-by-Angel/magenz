@@ -29,13 +29,35 @@ const createApp = (appName, isLocal, isDeflt) => {
 		fs.mkdirSync(appName);
 		process.chdir(appName);
 	}
-
+	console.log(`Creating folders structure:
+/components
+	/layouts
+		main.tsx
+	navBar.tsx
+	ThemeToggleButton.tsx
+	LinkItem.tsx
+/lib
+	theme.ts
+/pages
+	/api
+		index.ts
+	404.tsx
+	_app.tsx
+	_document.tsx
+	index.tsx
+.eslintrc.json
+.prettierrc.json
+next.config.js
+tsconfig.json
+package.json
+.gitignore
+	`);
 	fs.mkdirSync("components");
 	fs.mkdirSync("components/layouts");
 	fs.mkdirSync("lib");
 	fs.mkdirSync("pages");
 	fs.mkdirSync("pages/api");
-
+	console.log("Folders created");
 	fs.writeFileSync("components/navBar.tsx", navBar);
 	fs.writeFileSync("components/ThemeToggleButton.tsx", toggleButton);
 	fs.writeFileSync("components/layouts/main.tsx", mainLayout);
@@ -46,13 +68,14 @@ const createApp = (appName, isLocal, isDeflt) => {
 	fs.writeFileSync("pages/_app.tsx", _app);
 	fs.writeFileSync("pages/_document.tsx", _document);
 	fs.writeFileSync("pages/index.tsx", index);
-
+	console.log("Files inside folders created");
 	fs.writeFileSync(".eslintrc.json", eslint);
 	fs.writeFileSync(".prettierrc.json", prettier);
 	fs.writeFileSync("next.config.js", nextConf);
 	fs.writeFileSync("tsconfig.json", tsconfig);
 	fs.writeFileSync("package.json", package(appName));
 	fs.writeFileSync(".gitignore", "node_modules");
+	console.log("Files outside folders created");
 	if (isDeflt) {
 		execSync(
 			"npm install react react-dom next @chakra-ui/react @emotion/react @emotion/styled framer-motion",
@@ -91,7 +114,6 @@ rl.question(
 						? "Adding React, Next and Chakra"
 						: "Not added dependencies, you'll need to add them manually"
 				);
-				console.log(folderName, isLocal, isDeflt);
 				createApp(folderName, isLocal, isDeflt);
 				rl.close();
 			}
