@@ -99,6 +99,7 @@ rl.question(
 	"Name of the folder (leave it blank if you want it in the current folder): ",
 	answer => {
 		isLocal = answer !== "";
+		console.log(isLocal, answer, answer !== "");
 		folderName = answer;
 		console.log(
 			isLocal
