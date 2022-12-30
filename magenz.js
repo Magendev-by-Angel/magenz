@@ -55,11 +55,11 @@ const createApp = (appName, isLocal, isDeflt) => {
 	console.log("Files outside folders created");
 	if (isDeflt) {
 		execSync(
-			"npm install react react-dom next @chakra-ui/react @emotion/react @emotion/styled framer-motion",
+			"npm install react react-dom next @chakra-ui/react @chakra-ui/icons @emotion/react @emotion/styled framer-motion react-icons ",
 			{ stdio: "inherit" }
 		);
 		execSync(
-			"npm install -D eslint prettier typescript @types/node @types/react @types/next",
+			"npm install -D eslint prettier typescript @types/node @types/react",
 			{ stdio: "inherit" }
 		);
 	}
