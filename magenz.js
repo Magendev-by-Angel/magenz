@@ -29,29 +29,6 @@ const createApp = (appName, isLocal, isDeflt) => {
 		fs.mkdirSync(appName);
 		process.chdir(appName);
 	}
-	console.log(`Creating folders structure:
-/components
-	/layouts
-		main.tsx
-	navBar.tsx
-	ThemeToggleButton.tsx
-	LinkItem.tsx
-/lib
-	theme.ts
-/pages
-	/api
-		index.ts
-	404.tsx
-	_app.tsx
-	_document.tsx
-	index.tsx
-.eslintrc.json
-.prettierrc.json
-next.config.js
-tsconfig.json
-package.json
-.gitignore
-	`);
 	fs.mkdirSync("components");
 	fs.mkdirSync("components/layouts");
 	fs.mkdirSync("lib");
@@ -99,7 +76,6 @@ rl.question(
 	"Name of the folder (leave it blank if you want it in the current folder): ",
 	answer => {
 		isLocal = answer !== "";
-		console.log(isLocal, answer, answer !== "");
 		folderName = answer;
 		console.log(
 			isLocal
