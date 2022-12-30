@@ -22,10 +22,12 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 
-const createApp = appName => {
-	// fs.writeFileSync("", ``);
-	fs.mkdirSync(appName);
-	process.chdir(appName);
+const createApp = (appName, isLocal, isDeflt) => {
+	if (isLocal) {
+		fs.mkdirSync(appName);
+		process.chdir(appName);
+	}
+
 	fs.mkdirSync("components");
 	fs.mkdirSync("components/layouts");
 	fs.mkdirSync("lib");
@@ -49,16 +51,48 @@ const createApp = appName => {
 	fs.writeFileSync("tsconfig.json", tsconfig);
 	fs.writeFileSync("package.json", package(appName));
 	fs.writeFileSync(".gitignore", "node_modules");
-	execSync(
-		"npm install react react-dom next @chakra-ui/react @emotion/react @emotion/styled framer-motion"
-	);
-	execSync(
-		"npm install -D eslint prettier typescript @types/node @types/react @types/next"
-	);
+	if (isDeflt) {
+		execSync(
+			"npm install react react-dom next @chakra-ui/react @emotion/react @emotion/styled framer-motion",
+			{ stdio: "inherit" }
+		);
+		execSync(
+			"npm install -D eslint prettier typescript @types/node @types/react @types/next",
+			{ stdio: "inherit" }
+		);
+	}
 };
-const appName = process.argv[2];
-if (!appName) {
-	console.error("Error: App name is required");
-	process.exit(1);
-}
-createApp(appName);
+// const appName = process.argv[2];
+// if (!appName) {
+// 	console.error("Error: App name is required");
+// 	process.exit(1);
+// }
+let isLocal = false;
+let isDeflt = false;
+let folderName = "";
+rl.question(
+	"Name of the folder (leave it blank if you want it in the current folder): ",
+	answer => {
+		isLocal = answer !== "";
+		folderName = answer;
+		console.log(
+			isLocal
+				? "Creating project in current folder location"
+				: `Creating project "${answer}"`
+		);
+		rl.question(
+			"Do you want to install the default dependencies? [Y] or [N], anything else will be taken as a No ",
+			answer => {
+				isDeflt = answer === "Y" || answer === "y";
+				console.log(
+					isDeflt
+						? "Adding React, Next and Chakra"
+						: "Not added dependencies, you'll need to add them manually"
+				);
+				console.log(folderName, isLocal, isDeflt);
+				createApp(folderName, isLocal, isDeflt);
+				rl.close();
+			}
+		);
+	}
+);
